@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -50,7 +51,12 @@ func main() {
 
 	defer res.Body.Close()
 
-	json.NewDecoder(res.Body).Decode(&kpu)
+	err = json.NewDecoder(res.Body).Decode(&kpu)
+	if err != nil {
+
+	}
+
+	fmt.Println(kpu)
 
 	renderJson := func(w http.ResponseWriter, r *http.Request) {
 		tmplt := template.Must(template.ParseFiles("index.html"))
@@ -63,5 +69,5 @@ func main() {
 
 	http.HandleFunc("/", renderJson)
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":8081", nil))
 }

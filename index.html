@@ -9,40 +9,56 @@
     <table border="1">
         <thead>
             <tr>
-                <th>Parameter</th>
-                <th>Nilai</th>
+                <th>TS</th>
+                <th>PSU</th>
+                <th>Mode</th>
+                <th>Progres</th>
+                <th>Chart</th>
+                <th>Data</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>TS</td>
-                <td> {{ .KPU.TS }}</td>
-            </tr>
-            <tr>
-                <td>PSU</td>
-                <td> {{ .KPU.PSU }}</td>
-            </tr>
-            <tr>
-                <td>Mode</td>
-                <td> {{ .KPU.Mode }}</td>
-            </tr>
-            <tr>
-                <td colspan="2">Sub-Table</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <table>
+                <td style="vertical-align: top"> {{ .KPU.TS }}</td>
+                <td style="vertical-align: top"> {{ .KPU.PSU }}</td>
+                <td style="vertical-align: top"> {{ .KPU.Mode }}</td>
+                <td style="vertical-align: top">
+                    <table border="1">
                         <thead>
                         <tr>
-                            <th>Table</th>
+                            <th>Total</th>
+                            <th>Progres</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td> {{ .KPU.Progres.Total }}</td>
+                            <td> {{ .KPU.Progres.Progres}}</td>
+                        </tbody>
+                    </table>
+                </td>
+                <td style="vertical-align: top">
+                    <table border="1">
+                        <thead>
+                        <tr>
                             <th>100025</th>
                             <th>100026</th>
                             <th>100027</th>
-                            <th>PSU</th>
                             <th>Persen</th>
-                            <th>Status</th>
                         </tr>
                         </thead>
+                        <tbody>
+                        <tr>
+                            <td> {{ .KPU.Chart.Table1 }}</td>
+                            <td> {{ .KPU.Chart.Table2 }}</td>
+                            <td> {{ .KPU.Chart.Table3 }}</td>
+                            <td> {{ .KPU.Chart.Persen }}</td>
+
+                        </tbody>
+                    </table>
+                </td>
+                <td>
+                    <table border="1">
                         <tbody>
                         {{ range $key, $value := .KPU.Table }}
                         <tr>
@@ -62,42 +78,7 @@
         </tbody>
     </table>
 
-    <table border="1">
-        <thead>
-        <tr>
-            <th colspan="4">ChartData</th>
-        </tr>
-        <tr>
-            <th>100025</th>
-            <th>100026</th>
-            <th>100027</th>
-            <th>Persen</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td> {{ .KPU.Chart.Table1 }}</td>
-            <td> {{ .KPU.Chart.Table2 }}</td>
-            <td> {{ .KPU.Chart.Table3 }}</td>
-            <td> {{ .KPU.Chart.Persen }}</td>
 
-        </tbody>
-    </table>
-    <table border="1">
-        <thead>
-        <tr>
-            <th colspan="2">Progress</th>
-        </tr>
-        <tr>
-            <th>Total</th>
-            <th>Progres</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td> {{ .KPU.Progres.Total }}</td>
-            <td> {{ .KPU.Progres.Progres}}</td>
-        </tbody>
-    </table>
+
 </body>
 </html>
