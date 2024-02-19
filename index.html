@@ -6,7 +6,47 @@
     <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
 </head>
 <body>
-    <p>Last updated : {{ .KPU.TS }}</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Nilai</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>TS</td>
+                <td> {{ .KPU.TS }}</td>
+            </tr>
+            <tr>
+                <td>PSU</td>
+                <td> {{ .KPU.PSU }}</td>
+            </tr>
+            <tr>
+                <td>Mode</td>
+                <td> {{ .KPU.Mode }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th>100025</th>
+            <th>100026</th>
+            <th>100027</th>
+            <th>Persen</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td> {{ .KPU.Chart.Table1 }}</td>
+            <td> {{ .KPU.Chart.Table2 }}</td>
+            <td> {{ .KPU.Chart.Table3 }}</td>
+            <td> {{ .KPU.Chart.Persen }}</td>
+
+        </tbody>
+    </table>
     <table border="1">
         <thead>
             <tr>
@@ -31,6 +71,19 @@
             <td>{{  $value.StatusProgress }}</td>
         </tr>
         {{ end }}
+        </tbody>
+    </table>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Total</th>
+            <th>Progres</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td> {{ .KPU.Progres.Total }}</td>
+            <td> {{ .KPU.Progres.Progres}}</td>
         </tbody>
     </table>
 </body>

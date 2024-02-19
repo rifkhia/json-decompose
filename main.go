@@ -2,19 +2,18 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 )
 
 type KPU struct {
-	TS    string              `json:"ts"`
-	PSU   string              `json:"psu"`
-	Mode  string              `json:"mode"`
-	Chart ChartData           `json:"chart"`
-	Table map[string]TableRow `json:"table"`
-	//Progress ProgressData `json:"progres"`
+	TS      string              `json:"ts"`
+	PSU     string              `json:"psu"`
+	Mode    string              `json:"mode"`
+	Chart   ChartData           `json:"chart"`
+	Table   map[string]TableRow `json:"table"`
+	Progres ProgressData        `json:"progres"`
 }
 
 type ChartData struct {
@@ -24,8 +23,10 @@ type ChartData struct {
 	Persen float32 `json:"persen"`
 }
 
-//
-//type ProgressData string
+type ProgressData struct {
+	Total   int `json:"total"`
+	Progres int `json:"progres"`
+}
 
 type TableRow struct {
 	Table1         int     `json:"100025"`
@@ -50,8 +51,6 @@ func main() {
 	defer res.Body.Close()
 
 	json.NewDecoder(res.Body).Decode(&kpu)
-
-	fmt.Println(kpu)
 
 	renderJson := func(w http.ResponseWriter, r *http.Request) {
 		tmplt := template.Must(template.ParseFiles("index.html"))
