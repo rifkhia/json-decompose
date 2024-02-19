@@ -26,11 +26,47 @@
                 <td>Mode</td>
                 <td> {{ .KPU.Mode }}</td>
             </tr>
+            <tr>
+                <td colspan="2">Sub-Table</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Table</th>
+                            <th>100025</th>
+                            <th>100026</th>
+                            <th>100027</th>
+                            <th>PSU</th>
+                            <th>Persen</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{ range $key, $value := .KPU.Table }}
+                        <tr>
+                            <td>{{ $key }}</td>
+                            <td>{{ $value.Table1 }}</td>
+                            <td>{{  $value.Table2 }}</td>
+                            <td>{{  $value.Table3 }}</td>
+                            <td>{{  $value.PSU }}</td>
+                            <td>{{  $value.Persen }}</td>
+                            <td>{{  $value.StatusProgress }}</td>
+                        </tr>
+                        {{ end }}
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
         </tbody>
     </table>
 
     <table border="1">
         <thead>
+        <tr>
+            <th colspan="4">ChartData</th>
+        </tr>
         <tr>
             <th>100025</th>
             <th>100026</th>
@@ -49,32 +85,9 @@
     </table>
     <table border="1">
         <thead>
-            <tr>
-                <th>Table</th>
-                <th>100025</th>
-                <th>100026</th>
-                <th>100027</th>
-                <th>PSU</th>
-                <th>Persen</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-        {{ range $key, $value := .KPU.Table }}
         <tr>
-            <td>{{ $key }}</td>
-            <td>{{ $value.Table1}}</td>
-            <td>{{  $value.Table2 }}</td>
-            <td>{{  $value.Table3 }}</td>
-            <td>{{  $value.PSU }}</td>
-            <td>{{  $value.Persen }}</td>
-            <td>{{  $value.StatusProgress }}</td>
+            <th colspan="2">Progress</th>
         </tr>
-        {{ end }}
-        </tbody>
-    </table>
-    <table border="1">
-        <thead>
         <tr>
             <th>Total</th>
             <th>Progres</th>
