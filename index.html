@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KPU Sirekap</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+</head>
+<body>
+    <p>Last updated : {{ .KPU.TS }}</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Table</th>
+                <th>100025</th>
+                <th>100026</th>
+                <th>100027</th>
+                <th>PSU</th>
+                <th>Persen</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{ range $key, $value := .KPU.Table }}
+        <tr>
+            <td>{{ $key }}</td>
+            <td>{{ $value.Table1}}</td>
+            <td>{{  $value.Table2 }}</td>
+            <td>{{  $value.Table3 }}</td>
+            <td>{{  $value.PSU }}</td>
+            <td>{{  $value.Persen }}</td>
+            <td>{{  $value.StatusProgress }}</td>
+        </tr>
+        {{ end }}
+        </tbody>
+    </table>
+</body>
+</html>
